@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="安全," />
 
 
 
@@ -93,18 +93,19 @@
 
 
 
-<meta name="description" content="layout: poststitle: Padding oracla attackdate: 2017-10-13 10:19:41tags: 安全 categories: 杂padding oracle attack号称2010最有价值的漏洞。所针对的是对称加密CBC加密密文的攻击，值得注意的是这个漏洞并不挑加密算法，DES，AES都可以。  ###分组加密明文以一定大小的块为单位进行加密操作">
+<meta name="description" content="padding oracle attack号称2010最有价值的漏洞。所针对的是对称加密CBC加密密文的攻击，值得注意的是这个漏洞并不挑加密算法，DES，AES都可以。  分组加密明文以一定大小的块为单位进行加密操作（一般为8或16字节），待加密的字符串长度一定为块大小的整数倍，明文的长度不足的进行填充，如果缺少n个字节，就填充n个‘n的16进制数’，如果明文长度正好为快的整数倍则填充一个块长度的">
+<meta name="keywords" content="安全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Arthur-LC">
+<meta property="og:title" content="Padding oracla attack">
 <meta property="og:url" content="http://arthurlc.github.io/2017/10/13/Padding-oracla-attack/index.html">
 <meta property="og:site_name" content="Arthur-LC">
-<meta property="og:description" content="layout: poststitle: Padding oracla attackdate: 2017-10-13 10:19:41tags: 安全 categories: 杂padding oracle attack号称2010最有价值的漏洞。所针对的是对称加密CBC加密密文的攻击，值得注意的是这个漏洞并不挑加密算法，DES，AES都可以。  ###分组加密明文以一定大小的块为单位进行加密操作">
+<meta property="og:description" content="padding oracle attack号称2010最有价值的漏洞。所针对的是对称加密CBC加密密文的攻击，值得注意的是这个漏洞并不挑加密算法，DES，AES都可以。  分组加密明文以一定大小的块为单位进行加密操作（一般为8或16字节），待加密的字符串长度一定为块大小的整数倍，明文的长度不足的进行填充，如果缺少n个字节，就填充n个‘n的16进制数’，如果明文长度正好为快的整数倍则填充一个块长度的">
 <meta property="og:image" content="http://arthurlc.github.io/2017/10/13/Padding-oracla-attack/encrypt.png">
 <meta property="og:image" content="http://arthurlc.github.io/2017/10/13/Padding-oracla-attack/decrypt.png">
-<meta property="og:updated_time" content="2017-10-13T02:52:11.812Z">
+<meta property="og:updated_time" content="2017-10-13T03:33:54.752Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Arthur-LC">
-<meta name="twitter:description" content="layout: poststitle: Padding oracla attackdate: 2017-10-13 10:19:41tags: 安全 categories: 杂padding oracle attack号称2010最有价值的漏洞。所针对的是对称加密CBC加密密文的攻击，值得注意的是这个漏洞并不挑加密算法，DES，AES都可以。  ###分组加密明文以一定大小的块为单位进行加密操作">
+<meta name="twitter:title" content="Padding oracla attack">
+<meta name="twitter:description" content="padding oracle attack号称2010最有价值的漏洞。所针对的是对称加密CBC加密密文的攻击，值得注意的是这个漏洞并不挑加密算法，DES，AES都可以。  分组加密明文以一定大小的块为单位进行加密操作（一般为8或16字节），待加密的字符串长度一定为块大小的整数倍，明文的长度不足的进行填充，如果缺少n个字节，就填充n个‘n的16进制数’，如果明文长度正好为快的整数倍则填充一个块长度的">
 <meta name="twitter:image" content="http://arthurlc.github.io/2017/10/13/Padding-oracla-attack/encrypt.png">
 
 
@@ -139,7 +140,7 @@
 
 
 
-  <title> | Arthur-LC</title>
+  <title>Padding oracla attack | Arthur-LC</title>
   
 
 
@@ -285,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">Padding oracla attack</h1>
         
 
         <div class="post-meta">
@@ -297,7 +298,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T10:19:41+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T10:59:54+08:00">
                 2017-10-13
               </time>
             
@@ -307,6 +308,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/杂/" itemprop="url" rel="index">
+                    <span itemprop="name">杂</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -332,12 +355,10 @@
       
 
       
-        <hr>
-<p>layout: posts<br>title: Padding oracla attack<br>date: 2017-10-13 10:19:41<br>tags: 安全</p>
-<h2 id="categories-杂"><a href="#categories-杂" class="headerlink" title="categories: 杂"></a>categories: 杂</h2><p>padding oracle attack号称2010最有价值的漏洞。<br>所针对的是对称加密CBC加密密文的攻击，值得注意的是这个漏洞并不挑加密算法，DES，AES都可以。</p>
+        <p>padding oracle attack号称2010最有价值的漏洞。<br>所针对的是对称加密CBC加密密文的攻击，值得注意的是这个漏洞并不挑加密算法，DES，AES都可以。</p>
 <hr>
-<p>###分组加密<br>明文以一定大小的块为单位进行加密操作（一般为8或16字节），待加密的字符串长度一定为块大小的整数倍，明文的长度不足的进行填充，如果缺少n个字节，就填充n个‘n的16进制数’，如果明文长度正好为快的整数倍则填充一个块长度的‘块大小的16进制数’。  </p>
-<p>####对于块大小为8的分组加密<br>若明文为：  </p>
+<h3 id="分组加密"><a href="#分组加密" class="headerlink" title="分组加密"></a>分组加密</h3><p>明文以一定大小的块为单位进行加密操作（一般为8或16字节），待加密的字符串长度一定为块大小的整数倍，明文的长度不足的进行填充，如果缺少n个字节，就填充n个‘n的16进制数’，如果明文长度正好为快的整数倍则填充一个块长度的‘块大小的16进制数’。  </p>
+<h4 id="对于块大小为8的分组加密"><a href="#对于块大小为8的分组加密" class="headerlink" title="对于块大小为8的分组加密"></a>对于块大小为8的分组加密</h4><p>若明文为：  </p>
 <blockquote>
 <p><code>04ab05c0e65f</code></p>
 </blockquote>
@@ -354,18 +375,18 @@
 <p><code>04ab05c0e65fd3f20808080808080808</code></p>
 </blockquote>
 <p>所以填充的字符串的长度减去最后一个字节的16进制等于原字符串的长度。</p>
-<p>###CBC模式</p>
-<ul>
+<h3 id="CBC模式"><a href="#CBC模式" class="headerlink" title="CBC模式"></a>CBC模式</h3><ul>
 <li><p>加密操作<br><img src="/2017/10/13/Padding-oracla-attack/encrypt.png" alt="encrypt"></p>
 </li>
 <li><p>解密操作<br><img src="/2017/10/13/Padding-oracla-attack/decrypt.png" alt="encrypt"></p>
 </li>
 </ul>
-<p>###Padding Oracle Attack攻击原理</p>
-<blockquote>
-<p><code>http://crypto-class.appspot.com/po?er=f20bdba6ff29eed7b046d1df9fb7000058b1ffb4210a580f748b4ac714c001bd4a61044426fb515dad3f21f18aa577c0bdf302936266926ff37dbf7035d5eeb4</code></p>
+<h3 id="Padding-Oracle-Attack攻击原理"><a href="#Padding-Oracle-Attack攻击原理" class="headerlink" title="Padding Oracle Attack攻击原理"></a>Padding Oracle Attack攻击原理</h3><blockquote>
+<p><code>http://crypto-class.appspot.com/po?er=f20bdba6ff29eed7b046d1df9fb7000058b1ffb4210a580f748b4ac714c001bd4a61044426fb515dad3f21f18aa577c0bdf302936266926ff37dbf7035d5eeb4</code><br>这样的url链接后面的16进制字符串是用户post请求所提交数据加密后的结果，Padding Oracle Attack的目的就是获得这串字符串的明文，方法就是通过不断地访问这个url，通过返回的http状态码判断，并破解。服务器收到一个请求，先解密然 后判断填充是否合法，如果合法进行进一步处理，如果不合法直接返回403/500。合法同时解密出来的字符串服务器能够识别则返回200，不能识别返回 404。通过这个我们能知道我们构造的字符串是否合法。这也是这个漏洞中Oracle（神谕）这个词的由来。  </p>
 </blockquote>
-<p>这样的url链接后面的16进制字符串是用户post请求所提交数据加密后的结果，Padding Oracle Attack的目的就是获得这串字符串的明文，方法就是通过不断地访问这个url，通过返回的http状态码判断，并破解。服务器收到一个请求，先解密然 后判断填充是否合法，如果合法进行进一步处理，如果不合法直接返回403/500。合法同时解密出来的字符串服务器能够识别则返回200，不能识别返回 404。通过这个我们能知道我们构造的字符串是否合法。这也是这个漏洞中Oracle（神谕）这个词的由来。<br>分组加密是以块为单位的，块的大小可以使64位也可以是128位，对应8字节和16字节，本文的实例代码是根据16字节编写的。由于解密和加密操作中都有 一步是与前一个密文块异或的操作，我们简化为两个块的加密解密，第一个块为iv，第二个块为block是待解密的字符串。加密的过程是由明文与iv异或获 得新的字符串与密钥通过加密算法生成密文，我们将iv与明文异或获得的字符串成为中间向量。解密过程中是先利用密钥和解密算法解密密文在于iv异或获得明 文。这个过程中解密获得的字符串就是中间向量。<br>破解过程中先顶一个全为0的新iv，通过从后往前构造iv的每一个字节去试探服务器并获得http返回码来猜测。以最后一个字节为例，猜测的过程为：<br>构造新iv的最后一个字节a，从00到ff，每次进行一次http请求，获得200或者404时停止，此时我们构造的字符串是填充合法的字符串，明文最后一个字节应该为01，通过解密过程可以知道中间向量的最后一个字节g应该是：  </p>
+<p>分组加密是以块为单位的，块的大小可以使64位也可以是128位，对应8字节和16字节，本文的实例代码是根据16字节编写的。由于解密和加密操作中都有 一步是与前一个密文块异或的操作，我们简化为两个块的加密解密，第一个块为iv，第二个块为block是待解密的字符串。加密的过程是由明文与iv异或获 得新的字符串与密钥通过加密算法生成密文，我们将iv与明文异或获得的字符串成为中间向量。解密过程中是先利用密钥和解密算法解密密文在于iv异或获得明 文。这个过程中解密获得的字符串就是中间向量。  </p>
+<p>破解过程中先顶一个全为0的新iv，通过从后往前构造iv的每一个字节去试探服务器并获得http返回码来猜测。以最后一个字节为例，猜测的过程为：  </p>
+<p>构造新iv的最后一个字节a，从00到ff，每次进行一次http请求，获得200或者404时停止，此时我们构造的字符串是填充合法的字符串，明文最后一个字节应该为01，通过解密过程可以知道中间向量的最后一个字节g应该是：  </p>
 <blockquote>
 <p>g=a^01</p>
 </blockquote>
@@ -383,32 +404,55 @@
 </blockquote>
 <p>通过修改新iv中倒数第二个字节的值从00到ff，获得满足条件的倒数第二个字节b，通过同样的方法获得中间向量的倒数第二个字节，并获得明文中的倒数第二个字节。</p>
 <hr>
-<p>###应用<br>显然这个漏洞可以获取密文的明文，也应该构造出符合规则的密文去获取服务器上的某个文件（通过网页源码可知路径），或者做某些修改。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>显然这个漏洞可以获取密文的明文，也应该构造出符合规则的密文去获取服务器上的某个文件（通过网页源码可知路径），或者做某些修改。</p>
 <ul>
 <li>构造密文的原理<br>加密过程中间向量是由明文和iv异或得来的，对于任何一个随机串通过解密的方法我们都可以获得它的中间向量，显然我们将明文和中间向量异或获得的字 符串就可以作为iv，iv与随机串就构造出了一个合法的明文可知的密文。对于长度为多个块的构造，我们从最后一个块开始（当然明文都是填充后的），没构造 一个块所生成的iv，获得它的中间向量用以处理前一个明文块，直到构造完成。</li>
 </ul>
 <hr>
-<p>###解决方案<br>避免攻击的方法，对于填充错误和无效访问403/500/404错误，应该有相同的返回，混淆oracle，让攻击者无法猜测，对不同状态的返回设定延时，避免攻击者通过返回延时的特征判断返回状态。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>避免攻击的方法，对于填充错误和无效访问403/500/404错误，应该有相同的返回，混淆oracle，让攻击者无法猜测，对不同状态的返回设定延时，避免攻击者通过返回延时的特征判断返回状态。</p>
 <hr>
-<p>###代码<br>Coursera Cryptography I-PA4<br>`# -<em>- coding: utf-8 -</em>-<br>import urllib2<br>import threading<br>TARGET =’<a href="http://crypto-class.appspot.com/po?er=" target="_blank" rel="external">http://crypto-class.appspot.com/po?er=</a>‘<br>def query(q):<br>target = TARGET + urllib2.quote(q)  </p>
-<h1 id="Create-query-URL"><a href="#Create-query-URL" class="headerlink" title="Create query URL"></a>Create query URL</h1><h1 id="print-target"><a href="#print-target" class="headerlink" title="print(target)"></a>print(target)</h1><p>req = urllib2.Request(target)  </p>
-<h1 id="Send-HTTP-request-to-servertry"><a href="#Send-HTTP-request-to-servertry" class="headerlink" title="Send HTTP request to servertry:"></a>Send HTTP request to servertry:</h1><p>f = urllib2.urlopen(req)</p>
-<h1 id="Wait-for-response"><a href="#Wait-for-response" class="headerlink" title="Wait for response"></a>Wait for response</h1><p>returnTrue<br>except urllib2.HTTPError, e:if e.code ==404:print”We got: %d”% e.code # Print response codereturnTrue# good paddingreturnFalse# bad paddingdef xor(a,b):<br>t1=int(a,16)<br>t2=int(b,16)<br>t3=t1^t2<br>res=”%x”%t3<br>return res if len(res)==2else’0’+res</p>
-<p>def func(a):<br>res=”%x”%a<br>return res if len(res)==2else’0’+res</p>
-<p>def func2(a,b):<br>slen=len(a)<br>res=’’for i in xrange(0,slen,2):<br>res+=xor(b,a[i:i+2])return res</p>
-<p>def func3(a,b):<br>slen=len(a)<br>res=’’for i in xrange(0,slen,2):<br>res+=xor(a[i:i+2],b[i:i+2])return res</p>
-<p>source =’f20bdba6ff29eed7b046d1df9fb7000058b1ffb4210a580f748b4ac714c001bd4a61044426fb515dad3f21f18aa577c0bdf302936266926ff37dbf7035d5eeb4’<br>parts=[source[0:32],source[32:64],source[64:96],source[96:128]]<br>pad=[‘01’,’02’,’03’,’04’,’05’,’06’,’07’,’08’,’09’,’0a’,’0b’,’0c’,’0d’,’0e’,’0f’,’10’]def solve(iv,block):global pad<br>temp_iv=’’for t in range(16):<br>temp_iv+=’00’<br>intermediary_value=’’for idx,t in enumerate(pad):<br>temp_iv=temp_iv[:32-idx<em>2]+func2(intermediary_value,t)print”the”,str(idx+1),”try”for i in range(256):<br>qstr=temp_iv[:32-(idx+1)</em>2]+func(i)+temp_iv[32-idx*2:]+block<br>if query(qstr):print”sucess one”print qstr<br>print”in”,str(i),”.”<br>intermediary_value=xor(pad[idx],func(i))+intermediary_value<br>breakreturn func3(iv,intermediary_value)def decrypt():global parts<br>res=’’for i in xrange(len(parts)-1,0,-1):<br>res=solve(parts[i-1],parts[i])+res<br>plaintext=’’for i in xrange(0,len(res),2):<br>plaintext+=chr(int(res[i:i+2],16))return plaintext</p>
-<p>if <strong>name</strong>==”<strong>main</strong>“:<br>decrypt()`</p>
+<p>###代码<br>Coursera Cryptography I-PA4<br>`#-<em>- coding: utf-8 -</em>-<br>import urllib2<br>import threading<br>TARGET =’<a href="http://crypto-class.appspot.com/po?er=" target="_blank" rel="external">http://crypto-class.appspot.com/po?er=</a>‘<br>def query(q):<br>    target = TARGET + urllib2.quote(q)  </p>
+<pre><code>#Create query URL  
+#print(target)  
+req = urllib2.Request(target)  
+#Send HTTP request to servertry:  
+f = urllib2.urlopen(req)  
+#Wait for response  
+return True  
+    except urllib2.HTTPError, e:  
+    if e.code ==404:  
+        print&quot;We got: %d&quot;% e.code #Print response code  
+        return True #good padding  
+    return False #bad padding  
+</code></pre><p>def xor(a,b):<br>    t1=int(a,16)<br>    t2=int(b,16)<br>    t3=t1^t2<br>    res=”%x”%t3<br>    return res if len(res)==2 else ‘0’+res  </p>
+<p>def func(a):<br>    res=”%x”%a<br>    return res if len(res)==2 else ‘0’+res  </p>
+<p>def func2(a,b):<br>    slen=len(a)<br>    res=’’for i in xrange(0,slen,2):<br>    res+=xor(b,a[i:i+2])<br>    return res  </p>
+<p>def func3(a,b):<br>    slen=len(a)<br>    res=’’for i in xrange(0,slen,2):<br>    res+=xor(a[i:i+2],b[i:i+2])<br>    return res  </p>
+<p>source =’f20bdba6ff29eed7  b046d1df9fb70000  58b1ffb4210a580f  748b4ac714c001bd  4a61044426fb515d  ad3f21f18aa577c0  bdf302936266926f  f37dbf7035d5eeb4’<br>parts=[source[0:32],source[32:64],source[64:96],source[96:128]]<br>pad=[‘01’,’02’,’03’,’04’,’05’,’06’,’07’,’08’,’09’,’0a’,’0b’,’0c’,’0d’,’0e’,’0f’,’10’]  </p>
+<p>def solve(iv,block):<br>    global pad<br>    temp_iv=’’for t in range(16):<br>        temp_iv+=’00’<br>    intermediary_value=’’<br>    for idx,t in enumerate(pad):<br>        temp_iv=temp_iv[:32-idx<em>2]+func2(intermediary_value,t)<br>        print”the”,str(idx+1),”try”<br>        for i in range(256):<br>            qstr=temp_iv[:32-(idx+1)</em>2]+func(i)+temp_iv[32-idx*2:]+block<br>            if query(qstr):<br>                print”sucess one”print qstr<br>                print”in”,str(i),”.”<br>                intermediary_value=xor(pad[idx],func(i))+intermediary_value<br>                break<br>    return func3(iv,intermediary_value)  </p>
+<p>def decrypt():<br>    global parts<br>    res=’’<br>    for i in xrange(len(parts)-1,0,-1):<br>        res=solve(parts[i-1],parts[i])+res<br>        plaintext=’’<br>        for i in xrange(0,len(res),2):<br>            plaintext+=chr(int(res[i:i+2],16))<br>    return plaintext  </p>
+<p>if <strong>name</strong>==”<strong>main</strong>“:<br>    decrypt()`  </p>
 <p>这个例子一共有三个密文块需要解密，一共需要3<em>16</em>256次post请求操作，破解速度很不理想，很自然的应该使用多线程加速破解。</p>
-<p>###多线程版本<br>`# -<em>- coding: utf-8 -</em>-import urllib2<br>import threading<br>TARGET =’<a href="http://crypto-class.appspot.com/po?er=&#39;def" target="_blank" rel="external">http://crypto-class.appspot.com/po?er=&#39;def</a> query(q):<br>target = TARGET + urllib2.quote(q)# Create query URL#print(target)<br>req = urllib2.Request(target)# Send HTTP request to servertry:<br>f = urllib2.urlopen(req)# Wait for responsereturnTrueexcept urllib2.HTTPError, e:if e.code ==404:print”We got: %d”% e.code # Print response codereturnTrue# good paddingreturnFalse# bad paddingdef xor(a,b):<br>t1=int(a,16)<br>t2=int(b,16)<br>t3=t1^t2<br>res=”%x”%t3<br>return res if len(res)==2else’0’+res</p>
-<p>def func(a):<br>res=”%x”%a<br>return res if len(res)==2else’0’+res</p>
-<p>def func2(a,b):<br>slen=len(a)<br>res=’’for i in xrange(0,slen,2):<br>res+=xor(b,a[i:i+2])return res</p>
-<p>def func3(a,b):<br>slen=len(a)<br>res=’’for i in xrange(0,slen,2):<br>res+=xor(a[i:i+2],b[i:i+2])return res</p>
-<p>source =’f20bdba6ff29eed7b046d1df9fb7000058b1ffb4210a580f748b4ac714c001bd4a61044426fb515dad3f21f18aa577c0bdf302936266926ff37dbf7035d5eeb4’<br>parts=[source[0:32],source[32:64],source[64:96],source[96:128]]<br>pad=[‘01’,’02’,’03’,’04’,’05’,’06’,’07’,’08’,’09’,’0a’,’0b’,’0c’,’0d’,’0e’,’0f’,’10’]<br>plaintext=[‘’,’’,’’]def query_func(idx,i,temp_iv,block,ok_id):if query(temp_iv[:32-(idx+1)<em>2]+func(i)+temp_iv[32-idx</em>2:]+block):<br>ok_id[0]=i<br>print’ ‘+str(i)def solve(ti,iv,block):global pad<br>ok_id=[-1]<br>temp_iv=’’for t in range(16):<br>temp_iv+=’00’<br>intermediary_value=’’for idx,t in enumerate(pad):<br>temp_iv=temp_iv[:32-idx*2]+func2(intermediary_value,t)print str(ti)+” “+temp_iv+’\n’print”the “+str(ti)+”,”+str(idx+1)+” try”<br>threads=[]for i in range(256):<br>t=threading.Thread(target=query_func,args=(idx,i,temp_iv,block,ok_id,))<br>threads.append(t)for i in threads:<br>i.setDaemon(True)<br>i.start()for i in threads:<br>i.join()<br>intermediary_value=xor(pad[idx],func(ok_id[0]))+intermediary_value</p>
-<p>#print str(ti)+intermediary_value<br>ok_id[0]=-1return func3(iv,intermediary_value)def decrypt(t):global parts<br>global plaintext<br>res=solve(t,parts[t],parts[t+1])<br>pt=’’for i in range(0,32,2):<br>pt+=chr(int(res[i:i+2],16))<br>plaintext[t]=pt</p>
-<p>threads=[]<br>t1=threading.Thread(target=decrypt,args=(0,))<br>threads.append(t1)<br>t2=threading.Thread(target=decrypt,args=(1,))<br>threads.append(t2)<br>t3=threading.Thread(target=decrypt,args=(2,))<br>threads.append(t3)if <strong>name</strong>==”<strong>main</strong>“:for t in threads:<br>t.setDaemon(True)<br>t.start()for t in threads:<br>t.join()print plaintext[0]+ plaintext[1]+ plaintext[2]`</p>
+<h3 id="多线程版本"><a href="#多线程版本" class="headerlink" title="多线程版本"></a>多线程版本</h3><p>`#-<em>- coding: utf-8 -</em>-<br>import urllib2<br>import threading<br>TARGET =’<a href="http://crypto-class.appspot.com/po?er=" target="_blank" rel="external">http://crypto-class.appspot.com/po?er=</a>‘<br>def query(q):<br>    target = TARGET + urllib2.quote(q) #Create query URL<br>    req = urllib2.Request(target) #Send HTTP request to servertry:<br>    f = urllib2.urlopen(req)  </p>
+<pre><code># Wait for response  
+return True  
+except urllib2.HTTPError, e:  
+    if e.code ==404:  
+        print&quot;We got: %d&quot;% e.code # Print response code  
+        return True # good padding  
+    return False # bad padding  
+</code></pre><p>def xor(a,b):<br>    t1=int(a,16)<br>    t2=int(b,16)<br>    t3=t1^t2<br>    res=”%x”%t3<br>    return res if len(res)==2 else ‘0’+res  </p>
+<p>def func(a):<br>    res=”%x”%a<br>    return res if len(res)==2 else’0’+res  </p>
+<p>def func2(a,b):<br>    slen=len(a)<br>    res=’’<br>    for i in xrange(0,slen,2):<br>        res+=xor(b,a[i:i+2])<br>    return res  </p>
+<p>def func3(a,b):<br>    slen=len(a)<br>    res=’’<br>    for i in xrange(0,slen,2):<br>        res+=xor(a[i:i+2],b[i:i+2])<br>    return res  </p>
+<p>source =’f20bdba6ff29eed7  b046d1df9fb70000  58b1ffb4210a580f  748b4ac714c001bd  4a61044426fb515d  ad3f21f18aa577c0  bdf302936266926f  f37dbf7035d5eeb4’<br>parts=[source[0:32],source[32:64],source[64:96],source[96:128]]<br>pad=[‘01’,’02’,’03’,’04’,’05’,’06’,’07’,’08’,’09’,’0a’,’0b’,’0c’,’0d’,’0e’,’0f’,’10’]<br>plaintext=[‘’,’’,’’]<br>def query_func(idx,i,temp_iv,block,ok_id):<br>    if query(temp_iv[:32-(idx+1)<em>2]+func(i)+temp_iv[32-idx</em>2:]+block):<br>        ok_id[0]=i<br>    print’ ‘+str(i)<br>def solve(ti,iv,block):<br>    global pad<br>    ok_id=[-1]<br>    temp_iv=’’<br>    for t in range(16):<br>        temp_iv+=’00’<br>    intermediary_value=’’<br>    for idx,t in enumerate(pad):<br>        temp_iv=temp_iv[:32-idx*2]+func2(intermediary_value,t)<br>        print str(ti)+” “+temp_iv+’\n’<br>        print”the “+str(ti)+”,”+str(idx+1)+” try”<br>        threads=[]for i in range(256):<br>        t=threading.Thread(target=query_func,args=(idx,i,temp_iv,block,ok_id,))<br>        threads.append(t)<br>        for i in threads:<br>            i.setDaemon(True)<br>            i.start()<br>        for i in threads:<br>            i.join()<br>        intermediary_value=xor(pad[idx],func(ok_id[0]))+intermediary_value  </p>
+<pre><code>    #print str(ti)+intermediary_value  
+ok_id[0]=-1  
+return func3(iv,intermediary_value)  
+</code></pre><p>def decrypt(t):global parts<br>    global plaintext<br>    res=solve(t,parts[t],parts[t+1])<br>    pt=’’for i in range(0,32,2):<br>    pt+=chr(int(res[i:i+2],16))<br>    plaintext[t]=pt  </p>
+<p>threads=[]<br>t1=threading.Thread(target=decrypt,args=(0,))<br>threads.append(t1)<br>t2=threading.Thread(target=decrypt,args=(1,))<br>threads.append(t2)<br>t3=threading.Thread(target=decrypt,args=(2,))<br>threads.append(t3)<br>if <strong>name</strong>==”<strong>main</strong>“:<br>    for t in threads:<br>        t.setDaemon(True)<br>        t.start()<br>    for t in threads:<br>        t.join()<br>        print plaintext[0]+ plaintext[1]+ plaintext[2]`  </p>
 <hr>
-<p>###参考<br><a href="http://blog.zhaojie.me/2010/10/padding-oracle-attack-in-detail.html" target="_blank" rel="external">http://blog.zhaojie.me/2010/10/padding-oracle-attack-in-detail.html</a><br><a href="http://www.icylife.net/yunshu/attachments/Padding-Oracle-Attack.pdf" target="_blank" rel="external">http://www.icylife.net/yunshu/attachments/Padding-Oracle-Attack.pdf</a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://blog.zhaojie.me/2010/10/padding-oracle-attack-in-detail.html" target="_blank" rel="external">http://blog.zhaojie.me/2010/10/padding-oracle-attack-in-detail.html</a><br><a href="http://www.icylife.net/yunshu/attachments/Padding-Oracle-Attack.pdf" target="_blank" rel="external">http://www.icylife.net/yunshu/attachments/Padding-Oracle-Attack.pdf</a></p>
 
       
     </div>
@@ -435,6 +479,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/安全/" rel="tag"># 安全</a>
+          
+        </div>
       
 
       
@@ -536,7 +586,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -547,7 +597,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -582,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-杂"><span class="nav-number">1.</span> <span class="nav-text">categories: 杂</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-query-URL"><span class="nav-number"></span> <span class="nav-text">Create query URL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#print-target"><span class="nav-number"></span> <span class="nav-text">print(target)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Send-HTTP-request-to-servertry"><span class="nav-number"></span> <span class="nav-text">Send HTTP request to servertry:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Wait-for-response"><span class="nav-number"></span> <span class="nav-text">Wait for response</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#分组加密"><span class="nav-number">1.</span> <span class="nav-text">分组加密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对于块大小为8的分组加密"><span class="nav-number">1.1.</span> <span class="nav-text">对于块大小为8的分组加密</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CBC模式"><span class="nav-number">2.</span> <span class="nav-text">CBC模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Padding-Oracle-Attack攻击原理"><span class="nav-number">3.</span> <span class="nav-text">Padding Oracle Attack攻击原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-number">4.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">5.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程版本"><span class="nav-number">6.</span> <span class="nav-text">多线程版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
