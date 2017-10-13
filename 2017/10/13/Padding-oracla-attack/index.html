@@ -102,7 +102,7 @@
 <meta property="og:description" content="padding oracle attack号称2010最有价值的漏洞。所针对的是对称加密CBC加密密文的攻击，值得注意的是这个漏洞并不挑加密算法，DES，AES都可以。  分组加密明文以一定大小的块为单位进行加密操作（一般为8或16字节），待加密的字符串长度一定为块大小的整数倍，明文的长度不足的进行填充，如果缺少n个字节，就填充n个‘n的16进制数’，如果明文长度正好为快的整数倍则填充一个块长度的">
 <meta property="og:image" content="http://arthurlc.github.io/2017/10/13/Padding-oracla-attack/encrypt.png">
 <meta property="og:image" content="http://arthurlc.github.io/2017/10/13/Padding-oracla-attack/decrypt.png">
-<meta property="og:updated_time" content="2017-10-13T03:33:54.752Z">
+<meta property="og:updated_time" content="2017-10-13T03:37:43.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Padding oracla attack">
 <meta name="twitter:description" content="padding oracle attack号称2010最有价值的漏洞。所针对的是对称加密CBC加密密文的攻击，值得注意的是这个漏洞并不挑加密算法，DES，AES都可以。  分组加密明文以一定大小的块为单位进行加密操作（一般为8或16字节），待加密的字符串长度一定为块大小的整数倍，明文的长度不足的进行填充，如果缺少n个字节，就填充n个‘n的16进制数’，如果明文长度正好为快的整数倍则填充一个块长度的">
@@ -382,8 +382,9 @@
 </li>
 </ul>
 <h3 id="Padding-Oracle-Attack攻击原理"><a href="#Padding-Oracle-Attack攻击原理" class="headerlink" title="Padding Oracle Attack攻击原理"></a>Padding Oracle Attack攻击原理</h3><blockquote>
-<p><code>http://crypto-class.appspot.com/po?er=f20bdba6ff29eed7b046d1df9fb7000058b1ffb4210a580f748b4ac714c001bd4a61044426fb515dad3f21f18aa577c0bdf302936266926ff37dbf7035d5eeb4</code><br>这样的url链接后面的16进制字符串是用户post请求所提交数据加密后的结果，Padding Oracle Attack的目的就是获得这串字符串的明文，方法就是通过不断地访问这个url，通过返回的http状态码判断，并破解。服务器收到一个请求，先解密然 后判断填充是否合法，如果合法进行进一步处理，如果不合法直接返回403/500。合法同时解密出来的字符串服务器能够识别则返回200，不能识别返回 404。通过这个我们能知道我们构造的字符串是否合法。这也是这个漏洞中Oracle（神谕）这个词的由来。  </p>
+<p><code>http://crypto-class.appspot.com/po?er=f20bdba6ff29eed7b046d1df9fb7000058b1ffb4210a580f748b4ac714c001bd4a61044426fb515dad3f21f18aa577c0bdf302936266926ff37dbf7035d5eeb4</code></p>
 </blockquote>
+<p>这样的url链接后面的16进制字符串是用户post请求所提交数据加密后的结果，Padding Oracle Attack的目的就是获得这串字符串的明文，方法就是通过不断地访问这个url，通过返回的http状态码判断，并破解。服务器收到一个请求，先解密然 后判断填充是否合法，如果合法进行进一步处理，如果不合法直接返回403/500。合法同时解密出来的字符串服务器能够识别则返回200，不能识别返回 404。通过这个我们能知道我们构造的字符串是否合法。这也是这个漏洞中Oracle（神谕）这个词的由来。  </p>
 <p>分组加密是以块为单位的，块的大小可以使64位也可以是128位，对应8字节和16字节，本文的实例代码是根据16字节编写的。由于解密和加密操作中都有 一步是与前一个密文块异或的操作，我们简化为两个块的加密解密，第一个块为iv，第二个块为block是待解密的字符串。加密的过程是由明文与iv异或获 得新的字符串与密钥通过加密算法生成密文，我们将iv与明文异或获得的字符串成为中间向量。解密过程中是先利用密钥和解密算法解密密文在于iv异或获得明 文。这个过程中解密获得的字符串就是中间向量。  </p>
 <p>破解过程中先顶一个全为0的新iv，通过从后往前构造iv的每一个字节去试探服务器并获得http返回码来猜测。以最后一个字节为例，猜测的过程为：  </p>
 <p>构造新iv的最后一个字节a，从00到ff，每次进行一次http请求，获得200或者404时停止，此时我们构造的字符串是填充合法的字符串，明文最后一个字节应该为01，通过解密过程可以知道中间向量的最后一个字节g应该是：  </p>
@@ -406,8 +407,9 @@
 <hr>
 <h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>显然这个漏洞可以获取密文的明文，也应该构造出符合规则的密文去获取服务器上的某个文件（通过网页源码可知路径），或者做某些修改。</p>
 <ul>
-<li>构造密文的原理<br>加密过程中间向量是由明文和iv异或得来的，对于任何一个随机串通过解密的方法我们都可以获得它的中间向量，显然我们将明文和中间向量异或获得的字 符串就可以作为iv，iv与随机串就构造出了一个合法的明文可知的密文。对于长度为多个块的构造，我们从最后一个块开始（当然明文都是填充后的），没构造 一个块所生成的iv，获得它的中间向量用以处理前一个明文块，直到构造完成。</li>
+<li>构造密文的原理</li>
 </ul>
+<p>加密过程中间向量是由明文和iv异或得来的，对于任何一个随机串通过解密的方法我们都可以获得它的中间向量，显然我们将明文和中间向量异或获得的字 符串就可以作为iv，iv与随机串就构造出了一个合法的明文可知的密文。对于长度为多个块的构造，我们从最后一个块开始（当然明文都是填充后的），没构造 一个块所生成的iv，获得它的中间向量用以处理前一个明文块，直到构造完成。</p>
 <hr>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>避免攻击的方法，对于填充错误和无效访问403/500/404错误，应该有相同的返回，混淆oracle，让攻击者无法猜测，对不同状态的返回设定延时，避免攻击者通过返回延时的特征判断返回状态。</p>
 <hr>
